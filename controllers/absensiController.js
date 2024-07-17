@@ -29,7 +29,16 @@ const login = async (req, res) => {
 
 const getAllData = async (req, res) => {
   try {
-    const absensi = await Absensi.find({});
+    const absensi = await Absensi.find({}).sort({ waktuAbsensi: -1 });
+    res.status(200).json({ data: absensi });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+const getRecent = async (req, res) => {
+  try {
+    const absensi = await Absensi.find({}).sort({ waktuAbsensi: -1 }).limit(5);
     res.status(200).json({ data: absensi });
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -39,4 +48,5 @@ const getAllData = async (req, res) => {
 module.exports = {
   login,
   getAllData,
+  getRecent,
 };
