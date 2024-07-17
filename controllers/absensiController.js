@@ -27,6 +27,16 @@ const login = async (req, res) => {
   }
 };
 
+const getAllData = async (req, res) => {
+  try {
+    const absensi = await Absensi.find({});
+    res.status(200).json({ data: absensi });
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
 module.exports = {
   login,
+  getAllData,
 };
