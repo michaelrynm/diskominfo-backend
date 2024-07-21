@@ -14,7 +14,11 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  periode: {
+  periodeMulai: {
+    type: Date,
+    required: true,
+  },
+  periodeSelesai: {
     type: Date,
     required: true,
   },
